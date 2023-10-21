@@ -9,11 +9,15 @@ module Github
     end
 
     def test_authentication
-      assert @client.authenticated?
+      VCR.use_cassette('github authentication') do
+        assert @client.authenticated?
+      end
     end
 
     def test_rate_limit
-      refute_nil @client.rate_limit
+      VCR.use_cassette('github rate_limit') do
+        refute_nil @client.rate_limit
+      end
     end
   end
 end

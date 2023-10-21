@@ -4,6 +4,15 @@ ENV['MT_NO_PLUGINS'] = '1' # Work around stupid autoloading of plugins
 gem 'minitest'
 require 'minitest/global_expectations/autorun'
 require 'minitest/hooks/default'
+require 'vcr'
+require 'webmock/minitest'
+
+VCR.configure do |config|
+  config.cassette_library_dir = 'spec/fixtures/vcr_cassettes'
+  config.hook_into :webmock
+
+  config.filter_sensitive_data('<GITHUB_TOKEN>') { ENV['GITHUB_API_ACCESS_TOKEN'] }
+end
 
 module Minitest
   class HooksSpec

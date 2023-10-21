@@ -1,0 +1,78 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: https://api.github.com/rate_limit
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept:
+      - application/vnd.github.v3+json
+      User-Agent:
+      - Octokit Ruby Gem 7.2.0
+      Content-Type:
+      - application/json
+      Authorization:
+      - token <GITHUB_TOKEN>
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Server:
+      - GitHub.com
+      Date:
+      - Mon, 23 Oct 2023 01:40:35 GMT
+      Content-Type:
+      - application/json; charset=utf-8
+      Transfer-Encoding:
+      - chunked
+      Cache-Control:
+      - no-cache
+      Github-Authentication-Token-Expiration:
+      - '2023-11-21 22:38:25 +0000'
+      X-Github-Media-Type:
+      - github.v3; format=json
+      X-Github-Api-Version-Selected:
+      - '2022-11-28'
+      X-Ratelimit-Limit:
+      - '5000'
+      X-Ratelimit-Remaining:
+      - '4995'
+      X-Ratelimit-Reset:
+      - '1698028584'
+      X-Ratelimit-Used:
+      - '5'
+      X-Ratelimit-Resource:
+      - core
+      Access-Control-Expose-Headers:
+      - ETag, Link, Location, Retry-After, X-GitHub-OTP, X-RateLimit-Limit, X-RateLimit-Remaining,
+        X-RateLimit-Used, X-RateLimit-Resource, X-RateLimit-Reset, X-OAuth-Scopes,
+        X-Accepted-OAuth-Scopes, X-Poll-Interval, X-GitHub-Media-Type, X-GitHub-SSO,
+        X-GitHub-Request-Id, Deprecation, Sunset
+      Access-Control-Allow-Origin:
+      - "*"
+      Strict-Transport-Security:
+      - max-age=31536000; includeSubdomains; preload
+      X-Frame-Options:
+      - deny
+      X-Content-Type-Options:
+      - nosniff
+      X-Xss-Protection:
+      - '0'
+      Referrer-Policy:
+      - origin-when-cross-origin, strict-origin-when-cross-origin
+      Content-Security-Policy:
+      - default-src 'none'
+      Vary:
+      - Accept-Encoding, Accept, X-Requested-With
+      X-Github-Request-Id:
+      - F2C8:217B:1B4799A:1B9E341:6535CF13
+    body:
+      encoding: ASCII-8BIT
+      string: '{"resources":{"core":{"limit":5000,"used":5,"remaining":4995,"reset":1698028584},"search":{"limit":30,"used":0,"remaining":30,"reset":1698025295},"graphql":{"limit":5000,"used":0,"remaining":5000,"reset":1698028835},"integration_manifest":{"limit":5000,"used":0,"remaining":5000,"reset":1698028835},"source_import":{"limit":100,"used":0,"remaining":100,"reset":1698025295},"code_scanning_upload":{"limit":1000,"used":0,"remaining":1000,"reset":1698028835},"actions_runner_registration":{"limit":10000,"used":0,"remaining":10000,"reset":1698028835},"scim":{"limit":15000,"used":0,"remaining":15000,"reset":1698028835},"dependency_snapshots":{"limit":100,"used":0,"remaining":100,"reset":1698025295},"audit_log":{"limit":1750,"used":0,"remaining":1750,"reset":1698028835},"code_search":{"limit":10,"used":0,"remaining":10,"reset":1698025295}},"rate":{"limit":5000,"used":5,"remaining":4995,"reset":1698028584}}'
+  recorded_at: Mon, 23 Oct 2023 01:42:18 GMT
+recorded_with: VCR 6.2.0
