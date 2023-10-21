@@ -8,13 +8,19 @@
     <title>GithubSearchApp<% if @page_title %> - <%= @page_title %><% end %></title>
   </head>
   <body>
-    <nav class="navbar" role="navigation">
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
       <div class="container">
         <a class="navbar-brand" href="/">GithubSearchApp</a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+                aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+          <!-- Add other navigation items here -->
+        </div>
       </div>
     </nav>
-
-    <div class="container" id="content">
+    <div class="container mt-4" id="content">
       <% if flash['notice'] %>
         <div class="alert alert-success" role="alert"><%= flash['notice'] %></div>
       <% end %>
@@ -22,7 +28,7 @@
         <div class="alert alert-danger" role="alert"><%= flash['error'] %></div>
       <% end %>
       <% if @page_title %>
-        <h1><%= @page_title %></h1>
+        <h1 class="mb-4"><%= @page_title %></h1>
       <% end %>
       <%== yield %>
     </div>

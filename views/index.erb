@@ -1,1 +1,31 @@
-<h1>Hello World!</h1>
+<div class="container mt-4">
+  <form class="form-inline mb-4" method="post" action="/">
+    <%== csrf_tag('/') %>
+    <input type="text" class="form-control mr-2" name="query" placeholder="Search GitHub Repositories">
+    <button type="submit" class="btn btn-primary">Search</button>
+  </form>
+
+  <div id="results">
+    <% @repos&.each do |repo| %>
+      <div class="card mb-4">
+        <div class="card-body">
+          <h5 class="card-title">
+            <a href="<%= repo.html_url %>"><%= repo.name %></a>
+          </h5>
+          <p class="card-text"><%= repo.description %></p>
+          <a href="<%= repo.html_url %>" class="btn btn-primary">View on GitHub</a>
+        </div>
+      </div>
+    <% end %>
+  </div>
+
+  <% if @repos %>
+    <div id="pagination" class="d-flex justify-content-between">
+      <% if !@page.nil? && @page > 1 %>
+        <a href="/?query=<%= @query %>&page=<%= @page - 1 %>" class="btn btn-outline-primary">Previous</a>
+      <% end %>
+      <span class="align-self-center">Page <%= @page %></span>
+      <a href="/?query=<%= @query %>&page=<%= @page + 1 %>" class="btn btn-outline-primary">Next</a>
+    </div>
+  <% end %>
+</div>

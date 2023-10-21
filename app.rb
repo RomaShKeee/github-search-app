@@ -6,6 +6,7 @@ require 'tilt'
 require 'tilt/erubi'
 
 require_relative 'initializer'
+require_relative 'lib/github/repos_search'
 
 class GithubSearchApp < Roda
   opts[:check_dynamic_arity] = false
@@ -104,7 +105,28 @@ class GithubSearchApp < Roda
     r.hash_branches('')
 
     r.root do
-      view 'index'
+      search_params(r)
+      perform_search unless @query.nil?
+      view('index')
     end
+
+    r.post do
+      search_params(r)
+      perform_search unless @query.nil?
+      view('index')
+    end
+  end
+
+  private
+
+  def search_params(req)
+    @page = req.params['page'].to_i.positive? ? req.params['page'].to_i : 1
+    @query = req.params['query']
+  end
+
+  def perform_search
+    search = Github::ReposSearch.new(@query)
+    @repos = search.repositories(page: @page)
+    flash['error'] = search.error_message if search.error_message
   end
 end
