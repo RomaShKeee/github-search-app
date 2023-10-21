@@ -44,11 +44,11 @@ spec = proc do |type|
     ENV.delete('COVERAGE')
   end
 end
-spec.call('model')
+spec.call('unit')
 spec.call('web')
 
 desc 'Run all specs'
-task default: %i[web_spec]
+task default: %i[web_spec unit_spec]
 
 desc 'Run all specs with coverage'
 task :spec_cov do
@@ -57,4 +57,4 @@ task :spec_cov do
   Dir.mkdir('coverage')
   Rake::Task['_spec_cov'].invoke
 end
-task _spec_cov: %i[web_spec_cov]
+task _spec_cov: %i[web_spec_cov unit_spec_cov]
