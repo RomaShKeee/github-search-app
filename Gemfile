@@ -3,11 +3,13 @@
 source 'https://rubygems.org'
 
 gem 'erubi', '>= 1.5'
+gem 'faraday-http-cache', '>= 2.0'
+gem 'octokit', '~> 5.0'
 gem 'rack-unreloader', '>= 2.1'
 gem 'rake'
 gem 'refrigerator', '>= 1'
 gem 'roda', '>= 3.66'
-gem 'sassc', '>= 2'
+gem 'sassc', '2.0.1'
 gem 'tilt', '>= 2.2'
 
 group :development do
